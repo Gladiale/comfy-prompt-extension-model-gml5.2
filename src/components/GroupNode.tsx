@@ -2,7 +2,7 @@
 // 展開・折り畳み、グループ名編集、ワードのDnD並替、グループ自体のDnD移動
 import { useRef, useState, type DragEvent } from "react";
 import { Reorder, motion, AnimatePresence } from "motion/react";
-import { FiChevronRight, FiPlus, FiTrash2 } from "react-icons/fi";
+import { FiChevronRight, FiFolderPlus, FiFilePlus, FiTrash2 } from "react-icons/fi";
 import type { Group, Word } from "@/types";
 import { usePrompt } from "@/context/PromptContext";
 import { groupHasSelection } from "@/lib/tree";
@@ -202,12 +202,23 @@ export function GroupNode({
               <button
                 onClick={(e) => {
                   e.stopPropagation();
+                  addWord(group.id);
+                }}
+                className="p-0.5 text-eva-green-soft hover:text-eva-green transition-colors opacity-60 hover:opacity-100"
+                title="ワード追加 (+ WORD)"
+              >
+                <FiFilePlus size={12} />
+              </button>
+
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
                   addGroup(group.id);
                 }}
                 className="p-0.5 text-eva-purple-bright hover:text-eva-green transition-colors opacity-60 hover:opacity-100"
                 title="サブグループ追加"
               >
-                <FiPlus size={12} />
+                <FiFolderPlus size={12} />
               </button>
 
               <button
@@ -263,13 +274,6 @@ export function GroupNode({
                   ))}
                 </AnimatePresence>
               </Reorder.Group>
-
-              <button
-                onClick={() => addWord(group.id)}
-                className="ml-6 mb-1.5 text-[11px] font-mono tracking-widest text-eva-ink-dim hover:text-eva-green transition-colors"
-              >
-                + WORD
-              </button>
 
               {/* 子グループ群（再帰） */}
               <div className="flex flex-col gap-1.5 pb-1.5">
