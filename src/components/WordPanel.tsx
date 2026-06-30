@@ -1,29 +1,29 @@
 // 左：ワード画面 / WordPanel
-import { useState, type DragEvent } from 'react'
-import { FiPlus } from 'react-icons/fi'
-import { usePrompt } from '@/context/PromptContext'
-import { GroupNode } from './GroupNode'
-import { SearchBox } from './SearchBox'
-import { IOButtons } from './IOButtons'
+import { useState, type DragEvent } from "react";
+import { FiPlus } from "react-icons/fi";
+import { usePrompt } from "@/context/PromptContext";
+import { GroupNode } from "./GroupNode";
+import { SearchBox } from "./SearchBox";
+import { IOButtons } from "./IOButtons";
 
 export function WordPanel() {
-  const { state, addGroup, moveGroup } = usePrompt()
-  const [query, setQuery] = useState('')
-  const [draggingGroup, setDraggingGroup] = useState<string | null>(null)
+  const { state, addGroup, moveGroup } = usePrompt();
+  const [query, setQuery] = useState("");
+  const [draggingGroup, setDraggingGroup] = useState<string | null>(null);
 
   // ルート領域へのドロップ → ルート直下へ
   const onRootDragOver = (e: DragEvent) => {
-    if (draggingGroup && e.dataTransfer.types.includes('text/group')) {
-      e.preventDefault()
-      e.dataTransfer.dropEffect = 'move'
+    if (draggingGroup && e.dataTransfer.types.includes("text/group")) {
+      e.preventDefault();
+      e.dataTransfer.dropEffect = "move";
     }
-  }
+  };
   const onRootDrop = (e: DragEvent) => {
-    if (!draggingGroup) return
-    e.preventDefault()
-    moveGroup(draggingGroup, { kind: 'root' })
-    setDraggingGroup(null)
-  }
+    if (!draggingGroup) return;
+    e.preventDefault();
+    moveGroup(draggingGroup, { kind: "root" });
+    setDraggingGroup(null);
+  };
 
   return (
     <section className="flex flex-col h-full min-h-0">
@@ -71,5 +71,5 @@ export function WordPanel() {
         )}
       </div>
     </section>
-  )
+  );
 }
