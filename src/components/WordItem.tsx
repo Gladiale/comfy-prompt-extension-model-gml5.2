@@ -1,10 +1,10 @@
 // ワード行 / WordItem — 選択切替・編集・DnD並替
 import { useRef, useState, type DragEvent } from "react";
 import { motion } from "motion/react";
-import { FiX } from "react-icons/fi";
 import type { Word } from "@/types";
 import { usePrompt } from "@/context/PromptContext";
 import { useConfirm } from "./ConfirmDialog";
+import { RiDeleteBin2Line } from "react-icons/ri";
 
 interface Props {
   word: Word;
@@ -122,7 +122,7 @@ export function WordItem({
         onDragEnd={onWordDragEnd}
         onClick={onClick}
         className={[
-          "group flex items-center gap-2 border rounded-sm px-2.5 py-1.5 cursor-pointer transition-all max-w-[260px]",
+          "group flex items-center gap-2 border rounded-sm px-2.5 py-1.5 cursor-pointer transition-all max-w-[260px] relative",
           editing ? "" : "select-none",
           word.selected
             ? "word-selected bg-eva-bg-panel-2"
@@ -196,10 +196,10 @@ export function WordItem({
         {!editing && (
           <button
             onClick={onDelete}
-            className="opacity-0 group-hover:opacity-100 text-eva-ink-dim hover:text-eva-magenta transition-all shrink-0"
+            className="absolute right-0 bottom-0 opacity-0 translate-x-1/2 group-hover:opacity-100 text-eva-ink-dim hover:text-eva-magenta transition-all shrink-0"
             title="削除"
           >
-            <FiX size={12} />
+            <RiDeleteBin2Line size={13} />
           </button>
         )}
       </div>
