@@ -27,6 +27,13 @@
 
 React 18 / Vite / TypeScript / Tailwind CSS / Motion / React Icons
 
+## 開発モード
+
+```bash
+npm run dev
+http://localhost:5173/src/popup.html
+```
+
 ## セットアップ
 
 ```bash
