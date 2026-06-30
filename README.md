@@ -1,3 +1,6 @@
+# vibe coding
+model GML 5.2
+
 # ComfyUI Prompt Recorder
 
 エヴァンゲリオン初号機をテーマにした、ComfyUI プロンプトワード記録 Chrome 拡張機能（Manifest V3）。
