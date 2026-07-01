@@ -171,7 +171,7 @@ export function WordItem({
               className={`truncate text-[13px] ${
                 word.selected ? "text-eva-green-soft font-medium" : "text-eva-ink"
               }`}
-              title={word.note}
+              title={word.text}
             >
               {word.text || <span className="text-eva-ink-dim italic">（empty）</span>}
             </div>
@@ -186,7 +186,7 @@ export function WordItem({
               boxShadow: "0 0 6px var(--eva-green)",
               // color: "var(--eva-green-soft)",
             }}
-            title="注釈あり"
+            title={word.note}
           >
             ✦
           </span>
